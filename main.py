@@ -18,6 +18,19 @@ def save_task(tasks):
         for task in tasks:
             file.write(task + '\n')
 
+def delete_task(tasks):
+    show_list(tasks)
+    try:
+        index = int(input('Enter task number to delete: ')) - 1
+        if 0 <= index < len(tasks):
+            removed = tasks.pop(index)
+            save_task(tasks)
+            print(f'Removed: {removed}')
+        else:
+            print('Invalid Number')
+    except ValueError:
+        print('Please enter a valid number')
+
 def main():
     tasks = load_tasks()
     while True:
@@ -37,8 +50,11 @@ def main():
             if len(task) > 1:
                 tasks.append(task)
                 save_task(tasks)
-            print('Enter at least one word...')
-
+                print(f'Task "{task}" added.')
+            else:
+                print('Enter at least one word...')
+        elif choice == '3':
+            delete_task(tasks)
         elif choice == '4':
             print('GoodBye👋')
             break
