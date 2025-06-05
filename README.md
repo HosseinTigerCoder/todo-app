@@ -1,1 +1,3 @@
 My To-do App Project.
+
+This app will run in terminal...
